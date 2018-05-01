@@ -9,7 +9,7 @@ read -p "entrer nombre de lignes : " SIZE
                 read tab[i]
              done
              echo -e "\n"
-             
+             start=$(date +%s.%N)
              for (( i=0 ; i<SIZE ; i++ ))
              do
                 for (( j=($i+1) ; j<SIZE ; j++ ))
@@ -26,6 +26,10 @@ read -p "entrer nombre de lignes : " SIZE
              do
                 echo ${tab[i]}
              done
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc )
+             printf "Execution time : %.8f sec \n " $difftimelps
+
              
 
 ##### tri par selection ####
@@ -37,7 +41,7 @@ echo "Enter the number :"
              do
                 read arr[$i]
              done
-             
+             start=$(date +%s.%N)
              for (( i=0;i<n-1;i++ ))
              do
                 small=${arr[$i]}
@@ -60,6 +64,9 @@ echo "Enter the number :"
             do
                echo ${arr[$i]}
             done
+            end=$(date +%s.%N)
+            difftimelps=$(echo "$end - $start" | bc )
+            printf "Execution time : %.8f sec \n " $difftimelps
             
             
 ##### tri par insertion ####
@@ -70,7 +77,7 @@ echo "Enter the number :"
              do
                 read arr[$i]
              done
-   
+             start=$(date +%s.%N)
              for (( i=1;i<n;i++ ))
              do
                 j=$i-1
@@ -87,6 +94,10 @@ echo "Enter the number :"
              do
                 echo ${arr[$i]}
              done
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc )
+             printf "Execution time : %.8f sec \n " $difftimelps
+
             
 ######## tri rapide ########
 printnumbers(){
@@ -121,12 +132,15 @@ printnumbers(){
              clear
              echo "Enter Numbers to be sorted : "
              read -a ARRAY 
-             
+             start=$(date +%s.%N)
              count=${#ARRAY[@]}
              echo "Numbers Before Sort : "
              printnumbers
              echo "Numbers After Sort :"
              sortnumbers "${ARRAY[@]}"
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc )
+             printf "Execution time : %.8f sec \n " $difftimelps
              
 ###### tri fusion ##########
 
@@ -147,7 +161,7 @@ echo "Enter number of terms :"
              k=0
              i=0
              let num=n+n
-             
+             start=$(date +%s.%N)
              for((x=0;x<num;x++))
              do 
                 if [ ${a[$j]} -le ${b[$k]} ]
@@ -182,7 +196,9 @@ echo "Enter number of terms :"
              do
                 echo ${c[$i]}
              done 
-
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc )
+             printf "Execution time : %.8f sec \n " $difftimelps
              
 
 
