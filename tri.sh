@@ -87,6 +87,47 @@ echo "Enter the number :"
              do
                 echo ${arr[$i]}
              done
+            
+######## tri rapide ########
+printnumbers(){
+                  echo ${ARRAY[*]}
+             }
+             sortnumbers(){
+                  local array=(`echo "$@"`)
+                  local -a l
+                  local -a g
+                  local -a e
+                  local x= 
+                  if [ ${#array[@]} -lt 2 ]; then
+                        echo -n ${array[@]}
+                  else
+                        local pivot=${array[0]}
+                        for x in ${array[@]} 
+                        do 
+                           if [ $x -lt $pivot ]
+                           then
+                                 l=( ${l[@]} $x )
+                           elif [ $x -gt $pivot ]
+                           then 
+                                 g=( ${g[@]} $x )
+                           else 
+                                 e=(${e[@]} $x )
+                           fi
+                        done
+                        echo "`sortnumbers "${l[@]}" ` ${e[@]} ` sortnumbers "${g[@]}" ` "
+
+                  fi
+             }           
+             clear
+             echo "Enter Numbers to be sorted : "
+             read -a ARRAY 
+             
+             count=${#ARRAY[@]}
+             echo "Numbers Before Sort : "
+             printnumbers
+             echo "Numbers After Sort :"
+             sortnumbers "${ARRAY[@]}"
+
              
 
 
