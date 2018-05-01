@@ -28,9 +28,13 @@ read -p "entrer nombre de lignes : " SIZE
              done
              
 
+##### tri par selection ####
 
+<<<<<<< HEAD
 ####### tri par selection ####
 
+=======
+>>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
 echo "Enter the number :"      
              read n
              echo "Enter number in an array :"
@@ -38,7 +42,11 @@ echo "Enter the number :"
              do
                 read arr[$i]
              done
+<<<<<<< HEAD
           
+=======
+             
+>>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
              for (( i=0;i<n-1;i++ ))
              do
                 small=${arr[$i]}
@@ -61,10 +69,16 @@ echo "Enter the number :"
             do
                echo ${arr[$i]}
             done
+<<<<<<< HEAD
 
 ####### tri par insertion ####
 
 
+=======
+            
+            
+##### tri par insertion ####
+>>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
 echo "Enter the number :"
              read n
              echo "Enter a number in an array :"
@@ -72,7 +86,11 @@ echo "Enter the number :"
              do
                 read arr[$i]
              done
+<<<<<<< HEAD
              
+=======
+   
+>>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
              for (( i=1;i<n;i++ ))
              do
                 j=$i-1
@@ -89,8 +107,51 @@ echo "Enter the number :"
              do
                 echo ${arr[$i]}
              done
+<<<<<<< HEAD
+=======
+            
+######## tri rapide ########
+printnumbers(){
+                  echo ${ARRAY[*]}
+             }
+             sortnumbers(){
+                  local array=(`echo "$@"`)
+                  local -a l
+                  local -a g
+                  local -a e
+                  local x= 
+                  if [ ${#array[@]} -lt 2 ]; then
+                        echo -n ${array[@]}
+                  else
+                        local pivot=${array[0]}
+                        for x in ${array[@]} 
+                        do 
+                           if [ $x -lt $pivot ]
+                           then
+                                 l=( ${l[@]} $x )
+                           elif [ $x -gt $pivot ]
+                           then 
+                                 g=( ${g[@]} $x )
+                           else 
+                                 e=(${e[@]} $x )
+                           fi
+                        done
+                        echo "`sortnumbers "${l[@]}" ` ${e[@]} ` sortnumbers "${g[@]}" ` "
 
+                  fi
+             }           
+             clear
+             echo "Enter Numbers to be sorted : "
+             read -a ARRAY 
+             
+             count=${#ARRAY[@]}
+             echo "Numbers Before Sort : "
+             printnumbers
+             echo "Numbers After Sort :"
+             sortnumbers "${ARRAY[@]}"
+>>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
 
+             
 
 
 
