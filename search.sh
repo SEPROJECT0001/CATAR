@@ -30,6 +30,7 @@
              do
                 echo -n "Enter element to be searched : "
                 read num
+                start=$(date +%s.%N)
                 lsearch $num
                 if [ $status -eq 0 ]
                 then
@@ -40,6 +41,9 @@
                 echo -n "Do you want another search (y/n): "
                 read search
              done
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc)
+             printf "Execution time : %.8f sec \n " $difftimelps
 
 ##### recherche binaire ##########
 echo "recherche binaire"
@@ -110,6 +114,7 @@ echo "recherche binaire"
              do
                 echo -n "Enter Element to be searched : "
                 read SearchedItem
+                start=$(date +%s.%N)
                 binarysearch "${ARRAY[@]}"
                 if [ $status -eq 0 ]
                 then
@@ -122,6 +127,10 @@ echo "recherche binaire"
                 read search
 
              done
+              end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc)
+             printf "Execution time : %.8f sec \n " $difftimelps
+
 
 
 ########## recherche avec grep ###########
@@ -131,9 +140,22 @@ echo "grep"
              read fname
              echo "Enter the search pattern : "
              read pattern
-             
+             start=$(date +%s.%N)
              if [ -f $fname ]; then
                     result=`grep -i -n "$pattern" $fname`
                     echo $result
              fi
+
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc)
+             printf "Execution time : %.8f sec \n " $difftimelps
+
+
+
+
+
+
+
+
+
 
