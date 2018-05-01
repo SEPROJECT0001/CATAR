@@ -124,3 +124,16 @@ echo "recherche binaire"
              done
 
 
+########## recherche avec grep ###########
+
+echo "grep"
+             echo "Enter file name : "
+             read fname
+             echo "Enter the search pattern : "
+             read pattern
+             
+             if [ -f $fname ]; then
+                    result=`grep -i -n "$pattern" $fname`
+                    echo $result
+             fi
+
