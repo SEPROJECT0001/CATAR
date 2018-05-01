@@ -127,6 +127,61 @@ printnumbers(){
              printnumbers
              echo "Numbers After Sort :"
              sortnumbers "${ARRAY[@]}"
+             
+###### tri fusion ##########
+
+echo "Enter number of terms :"
+             read n
+             for ((i=0;i<n;i++))
+             do 
+                echo "Enter 1st array $i data: " 
+                read a[$i]
+             done 
+             for((i=0;i<n;i++))
+             do 
+                echo "Enter 2nd array $i data:"
+                read b[$i]
+             done 
+             echo "Merge sort"
+             j=0
+             k=0
+             i=0
+             let num=n+n
+             
+             for((x=0;x<num;x++))
+             do 
+                if [ ${a[$j]} -le ${b[$k]} ]
+                then 
+                      c[$i]=${a[$j]} 
+                      i=$(expr $i + 1)
+                      j=$(expr $j + 1)
+                else 
+                      c[$i]=${b[$k]}
+                      i=$(expr $i + 1)
+                      k=$(expr $k + 1)
+                fi 
+                if [ $j -eq $n -o $k -eq $n ]
+                then 
+                      break 
+                fi
+             done 
+             for((;j<n;))
+             do 
+                c[$i]=${a[$j]}
+                i=$(expr $i + 1)
+                j=$(expr $j + 1)
+             done 
+             for ((;k<n;))
+             do
+                c[$i]=${b[$k]}
+                i=$(expr $i + 1)
+                k=$(expr $k + 1)
+             done 
+             echo "Sorrted number:"
+             for ((i=0;i<10;i++))
+             do
+                echo ${c[$i]}
+             done 
 
              
 
