@@ -9,7 +9,7 @@ read -p "entrer nombre de lignes : " SIZE
                 read tab[i]
              done
              echo -e "\n"
-             
+             start=$(date +%s.%N)
              for (( i=0 ; i<SIZE ; i++ ))
              do
                 for (( j=($i+1) ; j<SIZE ; j++ ))
@@ -26,6 +26,10 @@ read -p "entrer nombre de lignes : " SIZE
              do
                 echo ${tab[i]}
              done
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc )
+             printf "Execution time : %.8f sec \n " $difftimelps
+
              
 
 ##### tri par selection ####
@@ -43,10 +47,14 @@ echo "Enter the number :"
                 read arr[$i]
              done
 <<<<<<< HEAD
+<<<<<<< HEAD
           
 =======
              
 >>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
+=======
+             start=$(date +%s.%N)
+>>>>>>> 43c26fb79397a0eb3b2e39ffd865912831dccd7c
              for (( i=0;i<n-1;i++ ))
              do
                 small=${arr[$i]}
@@ -70,11 +78,17 @@ echo "Enter the number :"
                echo ${arr[$i]}
             done
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 ####### tri par insertion ####
 
 
 =======
+=======
+            end=$(date +%s.%N)
+            difftimelps=$(echo "$end - $start" | bc )
+            printf "Execution time : %.8f sec \n " $difftimelps
+>>>>>>> 43c26fb79397a0eb3b2e39ffd865912831dccd7c
             
             
 ##### tri par insertion ####
@@ -87,10 +101,14 @@ echo "Enter the number :"
                 read arr[$i]
              done
 <<<<<<< HEAD
+<<<<<<< HEAD
              
 =======
    
 >>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
+=======
+             start=$(date +%s.%N)
+>>>>>>> 43c26fb79397a0eb3b2e39ffd865912831dccd7c
              for (( i=1;i<n;i++ ))
              do
                 j=$i-1
@@ -108,7 +126,14 @@ echo "Enter the number :"
                 echo ${arr[$i]}
              done
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc )
+             printf "Execution time : %.8f sec \n " $difftimelps
+
+>>>>>>> 43c26fb79397a0eb3b2e39ffd865912831dccd7c
             
 ######## tri rapide ########
 printnumbers(){
@@ -143,14 +168,77 @@ printnumbers(){
              clear
              echo "Enter Numbers to be sorted : "
              read -a ARRAY 
-             
+             start=$(date +%s.%N)
              count=${#ARRAY[@]}
              echo "Numbers Before Sort : "
              printnumbers
              echo "Numbers After Sort :"
              sortnumbers "${ARRAY[@]}"
+<<<<<<< HEAD
 >>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
+=======
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc )
+             printf "Execution time : %.8f sec \n " $difftimelps
+             
+###### tri fusion ##########
+>>>>>>> 43c26fb79397a0eb3b2e39ffd865912831dccd7c
 
+echo "Enter number of terms :"
+             read n
+             for ((i=0;i<n;i++))
+             do 
+                echo "Enter 1st array $i data: " 
+                read a[$i]
+             done 
+             for((i=0;i<n;i++))
+             do 
+                echo "Enter 2nd array $i data:"
+                read b[$i]
+             done 
+             echo "Merge sort"
+             j=0
+             k=0
+             i=0
+             let num=n+n
+             start=$(date +%s.%N)
+             for((x=0;x<num;x++))
+             do 
+                if [ ${a[$j]} -le ${b[$k]} ]
+                then 
+                      c[$i]=${a[$j]} 
+                      i=$(expr $i + 1)
+                      j=$(expr $j + 1)
+                else 
+                      c[$i]=${b[$k]}
+                      i=$(expr $i + 1)
+                      k=$(expr $k + 1)
+                fi 
+                if [ $j -eq $n -o $k -eq $n ]
+                then 
+                      break 
+                fi
+             done 
+             for((;j<n;))
+             do 
+                c[$i]=${a[$j]}
+                i=$(expr $i + 1)
+                j=$(expr $j + 1)
+             done 
+             for ((;k<n;))
+             do
+                c[$i]=${b[$k]}
+                i=$(expr $i + 1)
+                k=$(expr $k + 1)
+             done 
+             echo "Sorrted number:"
+             for ((i=0;i<10;i++))
+             do
+                echo ${c[$i]}
+             done 
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc )
+             printf "Execution time : %.8f sec \n " $difftimelps
              
 
 
