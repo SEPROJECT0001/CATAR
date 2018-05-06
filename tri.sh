@@ -2,138 +2,134 @@
 
 #### tri a bule ########
 
-read -p "entrer nombre de lignes : " SIZE
-             for (( i=0 ; i<SIZE ; i++ ))
-             do
-                printf "Saisir un entier : "
-                read tab[i]
-             done
-             echo -e "\n"
+printnumbers(){
+                    echo ${ARRAY[*]}
+
+             }
+             exchange(){
+                    temp=${ARRAY[$1]}
+
+                    ARRAY[$1]=${ARRAY[$2]}
+
+                    ARRAY[$2]=$temp
+
+             }
+
+             sortnumbers(){
+                    for (( last=count-1;last>0;last--))
+                    do
+                       for((i=0;i<last;i++))
+                       do
+                          j=$((i+1))
+                          if [ ${ARRAY[i]} -gt ${ARRAY[j]} ]
+                          then
+                                exchange $i $j
+                          fi
+                       done
+                    done
+             }
+
+             echo "Enter Numbers to be Sorted"
+             read -a ARRAY
+                         
              start=$(date +%s.%N)
-             for (( i=0 ; i<SIZE ; i++ ))
-             do
-                for (( j=($i+1) ; j<SIZE ; j++ ))
-                do
-                    if [ ${tab[j]} -le ${tab[i]} ]
-                    then
-                         tampon=${tab[i]}
-                         tab[i]=${tab[j]}
-                         tab[j]=$tampon
-                    fi
-                done
-             done 
-             for (( i=0 ; i<SIZE ; i++ ))
-             do
-                echo ${tab[i]}
-             done
+             count=${#ARRAY[@]}
+
+             sortnumbers
+
+             echo "Numbers After Sort: "
+
+             printnumbers
+
              end=$(date +%s.%N)
              difftimelps=$(echo "$end - $start" | bc )
              printf "Execution time : %.8f sec \n " $difftimelps
 
+
              
 
-##### tri par selection ####
 
-<<<<<<< HEAD
+
+
 ####### tri par selection ####
 
-=======
->>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
-echo "Enter the number :"      
-             read n
-             echo "Enter number in an array :"
-             for (( i=0;i<n;i++ ))
-             do
-                read arr[$i]
-             done
-<<<<<<< HEAD
-<<<<<<< HEAD
-          
-=======
+
+printnumbers(){
+                    echo ${ARRAY[*]}
+             }
+             swap(){
+                    temp=${ARRAY[$1]}
+                    ARRAY[$1]=${ARRAY[$2]}
+                    ARRAY[$2]=$temp
+             }
+             sortnumbers(){
+                    for ((i=0;i<count;i++))
+                    do
+                       min=$i
+                       for ((j=i+1;j<count;j++))
+                       do
+                          if [ ${ARRAY[j]} -lt ${ARRAY[min]} ]
+                          then
+                                min=$j
+                          fi
+                       done
+                       swap $i $min
+                    done
+             }
+            
              
->>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
-=======
              start=$(date +%s.%N)
->>>>>>> 43c26fb79397a0eb3b2e39ffd865912831dccd7c
-             for (( i=0;i<n-1;i++ ))
-             do
-                small=${arr[$i]}
-                index=$i
-                for (( j=i+1;j<n;j++ ))
-                do
-                   if (( arr[j]<small ))
-                   then
-                         small=${arr[$j]}
-                         index=$j
-                   fi
-               done
-               temp=${arr[$i]}
-               arr[$i]=${arr[$index]}
-               arr[$index]=$temp   
-            done
- 
-            echo "Printing sorted array :"
-            for (( i=0;i<n;i++ ))   
-            do
-               echo ${arr[$i]}
-            done
-<<<<<<< HEAD
-<<<<<<< HEAD
+             count=${#ARRAY[@]}
 
-####### tri par insertion ####
+         
 
+             sortnumbers
 
-=======
-=======
-            end=$(date +%s.%N)
-            difftimelps=$(echo "$end - $start" | bc )
-            printf "Execution time : %.8f sec \n " $difftimelps
->>>>>>> 43c26fb79397a0eb3b2e39ffd865912831dccd7c
+             echo "Numbers After Sort: "
+
+             printnumbers
+
+             end=$(date +%s.%N)
+             difftimelps=$(echo "$end - $start" | bc )
+             printf "Execution time : %.8f sec \n " $difftimelps
             
             
 ##### tri par insertion ####
->>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
-echo "Enter the number :"
-             read n
-             echo "Enter a number in an array :"
-             for (( i=0;i<n;i++ ))
-             do
-                read arr[$i]
-             done
-<<<<<<< HEAD
-<<<<<<< HEAD
-             
-=======
-   
->>>>>>> a8540e4d5de90f0a194b00eee04fe70225242b96
-=======
-             start=$(date +%s.%N)
->>>>>>> 43c26fb79397a0eb3b2e39ffd865912831dccd7c
-             for (( i=1;i<n;i++ ))
-             do
-                j=$i-1
-                temp=${arr[$i]}
-                while (( j>=0 && arr[j]>temp ))
-                do
-                   arr[$j+1]=${arr[$j]}
-                   j=$j-1
-                done
-                arr[j+1]=$temp 
-             done
-             echo "Printing sorted array :"
-             for (( i=0;i<n;i++ ))
-             do
-                echo ${arr[$i]}
-             done
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-             end=$(date +%s.%N)
-             difftimelps=$(echo "$end - $start" | bc )
-             printf "Execution time : %.8f sec \n " $difftimelps
+printnumbers(){
+                  echo ${ARRAY[*]}
+            }
+            sortnumbers(){
+                  for((i=1;i<count;i++))
+                  do
+                     Temp=${ARRAY[i]}
+                     j=$((i-1))
+                     while [ $Temp -lt ${ARRAY[j]} ]
+                     do
+                        ARRAY[j+1]=${ARRAY[j]}
+                        let j--
+                        if [ $j == -1 ]
+                        then
+                              break
+                        fi
+                     done
+                     ARRAY[j+1]=$Temp
+                  done
+            }
+           
+            start=$(date +%s.%N)
+            count=${#ARRAY[@]}
 
->>>>>>> 43c26fb79397a0eb3b2e39ffd865912831dccd7c
+         
+
+            sortnumbers
+
+            echo "Numbers After Sort: "
+
+            printnumbers
+              
+            end=$(date +%s.%N)
+            difftimelps=$(echo "$end - $start" | bc )
+            printf "Execution time : %.8f sec \n " $difftimelps
             
 ######## tri rapide ########
 printnumbers(){
